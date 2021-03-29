@@ -38,11 +38,12 @@ while turn_on == True:
         print(drinktable)
         user_choice = input("Type the drink's name you want: ").lower()
         drink = menu.find_drink(user_choice)
-        is_resource_suf = coffee_machine.is_resource_sufficient(drink)
-        if is_resource_suf == True:
-            is_money_suf = money_machine.make_payment(drink.cost)
-            if is_money_suf == True:
-                coffee_machine.make_coffee(drink)
+        if not drink == None:
+            is_resource_suf = coffee_machine.is_resource_sufficient(drink)
+            if is_resource_suf == True:
+                is_money_suf = money_machine.make_payment(drink.cost)
+                if is_money_suf == True:
+                    coffee_machine.make_coffee(drink)
     elif option == 2:
         coffee_machine.report()
         money_machine.report()
